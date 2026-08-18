@@ -70,9 +70,18 @@ def get_embedding(text: str):
 app = FastAPI(
     title="Geetanjali AI - Career Assistant"
 )
+
 @app.get("/")
 async def serve_portfolio():
     return FileResponse("index.html")
+
+@app.get("/i1.jpeg")
+async def serve_profile_image():
+    return FileResponse("i1.jpeg")
+
+@app.get("/GEETANJALI_Resume.pdf")
+async def serve_resume():
+    return FileResponse("GEETANJALI_Resume.pdf")
 
 # ---------------------------------------------------------------------------
 # CORS
