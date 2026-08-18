@@ -173,18 +173,12 @@ class ChunkIndex:
             for c in self.chunks
         ]
 
-self.vectors = [
-    get_embedding(text)
-    for text in texts
-]
-
-logger.info("Embedded %d profile chunks with Mistral", len(self.vectors))
-
-        logger.info(
-            "Embedded %d profile chunks with %s",
-            len(self.vectors),
-            EMBEDDING_MODEL
-        )
+        self.vectors = [
+            get_embedding(text)
+            for text in texts
+        ]
+        
+        logger.info("Embedded %d profile chunks with Mistral", len(self.vectors))
 
     def search(
         self,
