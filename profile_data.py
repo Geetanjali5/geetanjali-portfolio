@@ -1,16 +1,3 @@
-"""
-profile_data.py
-
-This is the ONLY knowledge source for Geetanjali AI. Every chunk here is
-grounded in the content already on the portfolio page. The RAG pipeline
-retrieves from this list and the LLM is instructed to answer ONLY using
-retrieved chunks — never invent facts that aren't here.
-
-To update what the assistant knows, edit this list. No retraining needed —
-chunks are re-embedded automatically the next time the server starts.
-
-Last synced against Geetanjali's resume (Panipat, Haryana) on 2026-08-16.
-"""
 
 PROFILE_CHUNKS = [
     {
