@@ -24,7 +24,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
-from mistralai import Mistral
+from mistralai.client import Mistral
 from sentence_transformers import SentenceTransformer
 
 from profile_data import PROFILE_CHUNKS
