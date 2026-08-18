@@ -24,6 +24,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
+from fastapi.responses import FileResponse
 from mistralai.client import Mistral
 
 from profile_data import PROFILE_CHUNKS
@@ -69,7 +70,9 @@ def get_embedding(text: str):
 app = FastAPI(
     title="Geetanjali AI - Career Assistant"
 )
-
+@app.get("/")
+async def serve_portfolio():
+    return FileResponse("index.html")
 
 # ---------------------------------------------------------------------------
 # CORS
