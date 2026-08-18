@@ -1245,49 +1245,88 @@ footer{background:var(--bg-primary);border-top:1px solid var(--border);padding:2
   </div>
 </section>
 
+
 <!-- AI AGENT -->
 <section id="ai-agent">
   <div class="container">
+
     <div class="section-header reveal">
       <div class="section-eyebrow">Personal AI Agent</div>
       <h2 class="section-title">Ask <span class="gradient-text">Geetanjali AI</span></h2>
-      <p class="section-subtitle">An AI-powered career assistant trained on my professional profile — ask it about my projects, skills, or experience.</p>
+      <p class="section-subtitle">
+        Ask me about my projects, skills, experience, and career background.
+      </p>
     </div>
-    <div class="agent-wrapper reveal">
-      <div class="agent-intro">
-        <h3>A real RAG-powered agent</h3>
-        <p>This isn't a scripted FAQ bot. Your question is sent to a FastAPI backend, which retrieves the most relevant pieces of my verified profile (RAG) and passes them to an LLM to generate a grounded, recruiter-friendly answer — the same kind of pipeline shown in "How I Build AI Systems" above.</p>
-        <p>The assistant only answers from my verified profile data. If it doesn't know something, it says so instead of making it up.</p>
 
-      </div>
+    <div class="agent-wrapper reveal">
+
       <div class="chat-card">
         <div class="chat-header">
           <div class="chat-avatar"><i class="fas fa-robot"></i></div>
+
           <div class="chat-header-text">
             <div class="chat-header-title">Geetanjali AI</div>
-            <div class="chat-header-status"><span class="dot"></span>Career Assistant</div>
+            <div class="chat-header-status">
+              <span class="dot"></span>Career Assistant
+            </div>
           </div>
+
           <button class="chat-clear-btn" id="chat-clear">Clear</button>
         </div>
+
         <div class="chat-messages" id="chat-messages">
-          <div class="msg bot">Hi! I'm Geetanjali AI 👋<br><br>I can tell you about Geetanjali's AI/ML projects, technical skills, experience and career background. What would you like to know?</div>
+          <div class="msg bot">
+            Hi! I'm Geetanjali AI <br><br>
+            I can tell you about Geetanjali's AI/ML projects,
+            technical skills, experience and career background.
+            What would you like to know?
+          </div>
         </div>
+
         <div class="suggested-row" id="suggested-row">
-          <button class="suggested-chip" data-q="Tell me about Geetanjali">Tell me about Geetanjali</button>
-          <button class="suggested-chip" data-q="Show me her AI projects">Show me her AI projects</button>
-          <button class="suggested-chip" data-q="Tell me about her RAG experience">Tell me about her RAG experience</button>
-          <button class="suggested-chip" data-q="What are her core AI/ML skills?">Core AI/ML skills?</button>
-          <button class="suggested-chip" data-q="Why should I hire her?">Why should I hire her?</button>
+          <button class="suggested-chip" data-q="Tell me about Geetanjali">
+            Tell me about Geetanjali
+          </button>
+
+          <button class="suggested-chip" data-q="Show me her AI projects">
+            Show me her AI projects
+          </button>
+
+          <button class="suggested-chip" data-q="Tell me about her RAG experience">
+            Tell me about her RAG experience
+          </button>
+
+          <button class="suggested-chip" data-q="What are her core AI/ML skills?">
+            Core AI/ML skills?
+          </button>
+
+          <button class="suggested-chip" data-q="Why should I hire her?">
+            Why should I hire her?
+          </button>
         </div>
+
         <div class="chat-input-row">
-          <input type="text" id="chat-input" placeholder="Ask about my AI/ML projects, skills, or experience..." maxlength="300">
-          <button class="chat-send-btn" id="chat-send" aria-label="Send"><i class="fas fa-paper-plane"></i></button>
+          <input
+            type="text"
+            id="chat-input"
+            placeholder="Ask about my AI/ML projects, skills, or experience..."
+            maxlength="300"
+          >
+
+          <button
+            class="chat-send-btn"
+            id="chat-send"
+            aria-label="Send"
+          >
+            <i class="fas fa-paper-plane"></i>
+          </button>
         </div>
+
       </div>
     </div>
   </div>
 </section>
-
+   
 <!-- ARCHITECTURE 
 <section id="architecture">
   <div class="container">
