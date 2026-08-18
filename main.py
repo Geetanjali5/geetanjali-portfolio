@@ -25,7 +25,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 from mistralai.client import Mistral
-from sentence_transformers import SentenceTransformer
 
 from profile_data import PROFILE_CHUNKS
 
@@ -42,10 +41,6 @@ logger = logging.getLogger("geetanjali-ai")
 MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY")
 CHAT_MODEL = os.getenv("CHAT_MODEL", "mistral-small-latest")
 
-EMBEDDING_MODEL = os.getenv(
-    "EMBEDDING_MODEL",
-    "sentence-transformers/all-MiniLM-L6-v2"
-)
 
 ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "*")
 TOP_K = int(os.getenv("TOP_K", "4"))
@@ -62,8 +57,15 @@ if not MISTRAL_API_KEY:
 
 client = Mistral(api_key=MISTRAL_API_KEY) if MISTRAL_API_KEY else None
 
-embedding_model = SentenceTransformer(EMBEDDING_MODEL)
+EMBEDDING_MODEL = "mistral-embed"
 
+def get_embedding(text: str):
+    response = client.embeddings.create(
+        model=EMBEDDING_MODEL,
+        inputs=[text]
+    )
+    return response.data[0].embedding
+    
 app = FastAPI(
     title="Geetanjali AI - Career Assistant"
 )
@@ -171,9 +173,12 @@ class ChunkIndex:
             for c in self.chunks
         ]
 
-        embeddings = embedding_model.encode(texts)
+self.vectors = [
+    get_embedding(text)
+    for text in texts
+]
 
-        self.vectors = embeddings.tolist()
+logger.info("Embedded %d profile chunks with Mistral", len(self.vectors))
 
         logger.info(
             "Embedded %d profile chunks with %s",
@@ -346,9 +351,7 @@ def chat(req: ChatRequest):
 
     try:
 
-        q_emb = embedding_model.encode(
-            question
-        ).tolist()
+        q_emb = get_embedding(question)
 
     except Exception:
 
